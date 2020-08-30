@@ -239,6 +239,8 @@ main > section#mood {
   .logo {
     margin: 0;
     margin-bottom: 60px;
+    padding-left: 24px;
+    padding-right: 24px;
 
     > img {
       width: 100%;
@@ -247,7 +249,7 @@ main > section#mood {
 
   @media only screen and (max-width: 700px) {
     .logo {
-      margin: 0;
+      margin-bottom: 40px;
     }
   }
 }
@@ -317,19 +319,42 @@ main section.trailer {
         opacity: 0.8;
       }
     }
+  }
 
-    @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 700px) {
+    border: 1px solid rgba($color: #000, $alpha: 0.2);
+
+    .track {
       flex-direction: column;
       align-items: flex-start;
       border-radius: 0;
       border-bottom: 1px solid rgba($color: #000, $alpha: 0.2);
+      padding: 16px;
+      padding-top: 12px;
+      overflow: hidden;
+      position: relative;
 
       > img {
-        display: none;
+        left: -24px;
+        bottom: -24px;
+        position: absolute;
+        opacity: 0.3;
+        transform: scale(2);
+      }
+
+      &:hover {
+        > img {
+          transform: scale(2);
+        }
       }
 
       > .infos {
         margin-bottom: 12px;
+        margin-right: 0;
+      }
+
+      > .actions {
+        align-self: flex-end;
       }
     }
   }
