@@ -156,6 +156,22 @@ header {
     > * {
       margin-left: 8px;
     }
+
+    @media only screen and (max-width: 700px) {
+      .btn {
+        > i {
+          margin-right: 0;
+        }
+
+        > span {
+          display: none;
+        }
+
+        &#play-in-browser {
+          display: none;
+        }
+      }
+    }
   }
 
   #logo {
@@ -194,6 +210,12 @@ main > section {
       font-weight: 300;
       font-family: 'Quicksand', sans-serif;
     }
+
+    @media only screen and (max-width: 700px) {
+      > img {
+        display: none;
+      }
+    }
   }
 
   p,
@@ -215,7 +237,18 @@ main > section#mood {
   padding: 0;
 
   .logo {
-    margin-bottom: 80px;
+    margin: 0;
+    margin-bottom: 60px;
+
+    > img {
+      width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    .logo {
+      margin: 0;
+    }
   }
 }
 
@@ -284,6 +317,21 @@ main section.trailer {
         opacity: 0.8;
       }
     }
+
+    @media only screen and (max-width: 700px) {
+      flex-direction: column;
+      align-items: flex-start;
+      border-radius: 0;
+      border-bottom: 1px solid rgba($color: #000, $alpha: 0.2);
+
+      > img {
+        display: none;
+      }
+
+      > .infos {
+        margin-bottom: 12px;
+      }
+    }
   }
 }
 
@@ -292,6 +340,10 @@ main section.trailer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 12px;
+
+  @media only screen and (max-width: 700px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
   .developer {
     display: flex;
