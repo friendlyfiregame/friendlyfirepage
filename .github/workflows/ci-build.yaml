@@ -1,0 +1,62 @@
+name: Build and deploy static website
+on:
+  push:
+    branches:
+    - master
+    tags:
+      - 'v*.*.*'
+  pull_request:
+    branches:
+    - master
+jobs:
+
+  build_website:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: "14.x"
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    - run: yarn install
+    - run: yarn build:dist
+    - name: Archive dist folder
+      uses: actions/upload-artifact@v1
+      with:
+        name: static-website-dist
+        path: dist
+
+  deploy_website:
+    name: Deploy
+    needs: build_webapp
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Download archived dist folder
+      uses: actions/download-artifact@master
+      with:
+        name: static-website-dist
+        path: dist
+
+    - name: Publish static website
+      if: github.ref == 'refs/heads/master'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        external_repository: friendlyfiregame/friendlyfiregame.github.io
+        publish_branch: master
+        publish_dir: ./dist
+        force_orphan: true
+        cname: friendlyfiregame.com
