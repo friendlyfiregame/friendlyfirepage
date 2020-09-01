@@ -1,8 +1,8 @@
 {
   "name": "friendlyfire-staticsite",
-  "description": "Static website to provide information about friendy fire",
+  "description": "Static website to provide information about friendly fire",
   "version": "0.1.0",
-  "homepage": "https://www.friendyfiregame.com/",
+  "homepage": "https://www.friendlyfiregame.com/",
   "author": {
     "name": "Eduard But",
     "url": "https://www.d-cay.de"

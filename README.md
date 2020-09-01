@@ -1,4 +1,4 @@
-# Static page for www.friendyfiregame.com
+# Static page for www.friendlyfiregame.com
 
 ## Development
 
