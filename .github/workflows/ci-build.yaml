@@ -58,4 +58,4 @@ jobs:
         publish_branch: gh-pages
         publish_dir: ./dist
         force_orphan: true
-        cname: friendlyfiregame.com
+        cname: www.friendlyfiregame.com
