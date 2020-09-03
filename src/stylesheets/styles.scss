@@ -112,6 +112,14 @@ a {
     }
   }
 
+  &.itch {
+    background-color: #ff2449;
+
+    &:hover {
+      background-color: #de092d;
+    }
+  }
+
   &.steam {
     background-color: #192837;
 
